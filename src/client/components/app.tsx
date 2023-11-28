@@ -3,22 +3,44 @@ import { useApi } from "../hooks/useApi";
 import { Home } from "./home";
 import { Activity } from "./activity";
 
+type Page =
+  | {
+      kind: "home";
+    }
+  | {
+      kind: "loading";
+    }
+  | { kind: "activity"; activityName: string };
+
 export function App() {
   const quiz = useApi();
-  const [page, setPage] = useState<string>(quiz === null ? "loading" : "home");
+  const [page, setPage] = useState<Page>(
+    quiz === null ? { kind: "loading" } : { kind: "home" }
+  );
   useEffect(() => {
     if (quiz !== null) {
-      setPage("home");
+      setPage({ kind: "home" });
     }
   }, [quiz]);
-  switch (page) {
+  switch (page.kind) {
     case "home":
-      return <Home quiz={quiz!} startActivity={() => setPage("activity")} />;
+      return (
+        <Home
+          quiz={quiz!}
+          startActivity={(activityName) =>
+            setPage({ kind: "activity", activityName })
+          }
+        />
+      );
     case "activity":
       return (
         <Activity
-          activity={quiz!.activities[0]}
-          goHome={() => setPage("home")}
+          activity={
+            quiz!.activities.find(
+              (activity) => activity.activity_name === page.activityName
+            )!
+          }
+          goHome={() => setPage({ kind: "home" })}
         />
       );
     default:

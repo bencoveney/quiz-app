@@ -1,6 +1,6 @@
-import { Activity, Quiz } from "../hooks/useApi";
+import { Quiz } from "../hooks/useApi";
 
-export type StartActivity = (activity: Activity) => void;
+export type StartActivity = (activityName: string) => void;
 
 export function Home({
   quiz,
@@ -17,7 +17,7 @@ export function Home({
         {quiz.activities.map((activity) => (
           <button
             key={activity.activity_name}
-            onClick={() => startActivity(activity)}
+            onClick={() => startActivity(activity.activity_name)}
           >
             {activity.activity_name}
           </button>
