@@ -10,22 +10,26 @@ export interface Quiz {
 
 export interface Activity {
   activity_name: string;
-  order: number;
   questions: Round[] | Question[];
+  // order exists in the JSON document, but arrays are already ordered.
 }
 
 export interface Round {
   round_title: string;
-  order: number;
   questions: Question[];
+  // order exists in the JSON document, but arrays are already ordered.
 }
 
 export interface Question {
   is_correct: boolean;
   stimulus: string;
-  order: number;
   feedback: string;
-  // user_answers exists it the JSON document, but never has any content.
+  // order exists in the JSON document, but arrays are already ordered.
+  // user_answers exists in the JSON document, but never has any content.
+}
+
+export function isRound(candidate: Round | Question): candidate is Round {
+  return !!(candidate as Round).round_title;
 }
 
 interface ApiResponse {

@@ -26,7 +26,7 @@ export function Question({
       <div>{question.stimulus}</div>
       <div>Q{question.order}</div>
       <button onClick={() => answerQuestion(true)}>Correct</button>
-      <button onClick={() => answerQuestion(false)}>Inorrect</button>
+      <button onClick={() => answerQuestion(false)}>Incorrect</button>
     </div>
   );
 }

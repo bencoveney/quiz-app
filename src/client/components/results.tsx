@@ -1,13 +1,19 @@
-export function Results({ goHome }: { goHome: () => void }) {
+export function Results({
+  goHome,
+  results,
+}: {
+  goHome: () => void;
+  results: boolean[];
+}) {
   return (
     <div>
       <div>Activity One</div>
       <div>Results</div>
-      <div>Q1: Correct</div>
-      <div>Q1: False</div>
-      <div>Q1: Correct</div>
-      <div>Q1: False</div>
-      <div>Q1: Correct</div>
+      {results.map((result, index) => (
+        <div key={index}>
+          Q{index}: {result ? "Correct" : "False"}
+        </div>
+      ))}
       <button onClick={goHome}>Home</button>
     </div>
   );
