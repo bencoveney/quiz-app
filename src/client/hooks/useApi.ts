@@ -2,6 +2,32 @@ import { useState, useEffect } from "react";
 
 const cache = fetch("/api").then((res) => res.json());
 
+export interface Quiz {
+  name: string;
+  heading: string;
+  activities: Activity[];
+}
+
+export interface Activity {
+  activity_name: string;
+  order: number;
+  questions: Round[] | Question[];
+}
+
+export interface Round {
+  round_title: string;
+  order: number;
+  questions: Question[];
+}
+
+export interface Question {
+  is_correct: boolean;
+  stimulus: string;
+  order: number;
+  feedback: string;
+  // user_answers exists it the JSON document, but never has any content.
+}
+
 interface ApiResponse {
   name: "Error Find";
   heading: "This game teaches you to find mistakes in written text.";
