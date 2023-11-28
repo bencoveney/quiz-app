@@ -1,0 +1,19 @@
+{
+  "name": "quiz-app",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bencoveney/quiz-app.git"
+  },
+  "author": "Ben Coveney",
+  "bugs": {
+    "url": "https://github.com/bencoveney/quiz-app/issues"
+  },
+  "homepage": "https://github.com/bencoveney/quiz-app#readme",
+  "devDependencies": {
+    "esbuild": "^0.19.8"
+  }
+}
