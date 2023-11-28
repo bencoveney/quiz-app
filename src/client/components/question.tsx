@@ -21,10 +21,10 @@ export function Question({
     <div>
       <div>
         {activity.activity_name}
-        {round ? ` / Round ${round.round_title}` : null}
+        {round ? ` / ${round.round_title}` : null}
       </div>
+      <div>Q{1}</div>
       <div>{question.stimulus}</div>
-      <div>Q{question.order}</div>
       <button onClick={() => answerQuestion(true)}>Correct</button>
       <button onClick={() => answerQuestion(false)}>Incorrect</button>
     </div>

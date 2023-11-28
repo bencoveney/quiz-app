@@ -1,48 +1,19 @@
-import { useEffect, useState } from "react";
 import { useApi } from "../hooks/useApi";
 import { Home } from "./home";
 import { Activity } from "./activity";
-
-type Page =
-  | {
-      kind: "home";
-    }
-  | {
-      kind: "loading";
-    }
-  | { kind: "activity"; activityName: string };
+import { useRouter } from "../hooks/useRouter";
 
 export function App() {
   const quiz = useApi();
-  const [page, setPage] = useState<Page>(
-    quiz === null ? { kind: "loading" } : { kind: "home" }
-  );
-  useEffect(() => {
-    if (quiz !== null) {
-      setPage({ kind: "home" });
-    }
-  }, [quiz]);
+  const { page, goHome, goToActivity } = useRouter(quiz);
   switch (page.kind) {
     case "home":
-      return (
-        <Home
-          quiz={quiz!}
-          startActivity={(activityName) =>
-            setPage({ kind: "activity", activityName })
-          }
-        />
-      );
+      return <Home quiz={quiz!} startActivity={goToActivity} />;
     case "activity":
-      return (
-        <Activity
-          activity={
-            quiz!.activities.find(
-              (activity) => activity.activity_name === page.activityName
-            )!
-          }
-          goHome={() => setPage({ kind: "home" })}
-        />
-      );
+      const currentActivity = quiz!.activities.find(
+        (activity) => activity.activity_name === page.activityName
+      )!;
+      return <Activity activity={currentActivity} goHome={goHome} />;
     default:
     case "loading":
       return "loading";
