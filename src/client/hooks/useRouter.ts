@@ -8,12 +8,14 @@ export type Page =
   | {
       page: "loading";
     }
-  | { page: "activity"; activityName: string };
+  | { page: "activity"; activityName: string }
+  | { page: "results" };
 
 export type Router = {
   route: Page;
   goHome: () => void;
   goToActivity: (activityName: string) => void;
+  goToResults: () => void;
 };
 
 export function useRouter(quiz: Quiz | null): Router {
@@ -28,13 +30,7 @@ export function useRouter(quiz: Quiz | null): Router {
     }
   }, [quiz]);
 
-  const goHome = useCallback(
-    () =>
-      setPage({
-        page: "home",
-      }),
-    [setPage]
-  );
+  const goHome = useCallback(() => setPage({ page: "home" }), [setPage]);
   const goToActivity = useCallback(
     (activityName: string) =>
       setPage({
@@ -43,10 +39,15 @@ export function useRouter(quiz: Quiz | null): Router {
       }),
     [setPage]
   );
+  const goToResults = useCallback(
+    () => setPage({ page: "results" }),
+    [setPage]
+  );
 
   return {
     route: page,
     goHome,
     goToActivity,
+    goToResults,
   };
 }

@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import { Activity, Question, Round, isRound } from "./useApi";
+import { SaveResults } from "./useSavedResults";
 
 export type ActitityResults = {
   kind: "results";
@@ -18,7 +19,10 @@ export type ActivityProgress = ActitityResults | ActivityRunning;
 
 export type QuestionDescription = { round?: Round; question: Question };
 
-export function useActivityProgress(activity: Activity): ActivityProgress {
+export function useActivityProgress(
+  activity: Activity,
+  save: SaveResults
+): ActivityProgress {
   const flatListOfQuestions = useMemo(
     () =>
       activity.questions.flatMap<QuestionDescription>((questionOrRound) => {
@@ -39,7 +43,14 @@ export function useActivityProgress(activity: Activity): ActivityProgress {
   const answerQuestion = useCallback(
     (answer: boolean) => {
       const currentQuestion = flatListOfQuestions[results.length];
-      setResults([...results, currentQuestion.question.is_correct === answer]);
+      const newResults = [
+        ...results,
+        currentQuestion.question.is_correct === answer,
+      ];
+      setResults(newResults);
+      if (newResults.length >= flatListOfQuestions.length) {
+        save(activity.activity_name, results);
+      }
     },
     [results]
   );
