@@ -6,6 +6,7 @@
   color: #2699fb;
   border: 0;
   padding: 20px;
+  cursor: pointer;
 }
 
 .button:hover {
@@ -19,6 +20,7 @@
 .button:disabled {
   color: #cccccc;
   background-color: #ffffff;
+  cursor: not-allowed;
 }
 
 .verticalButtons {
@@ -37,4 +39,8 @@
 .horizontalButtons {
   display: flex;
   flex-direction: row;
+}
+
+.horizontalButtons > .button {
+  flex: 1 0 10px;
 }

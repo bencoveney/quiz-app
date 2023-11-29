@@ -6,3 +6,11 @@
   display: flex;
   flex-direction: column;
 }
+
+.thin {
+  min-width: 300px;
+}
+
+.wide {
+  min-width: 600px;
+}

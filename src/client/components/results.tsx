@@ -8,7 +8,7 @@ export function Results({
   results: boolean[];
 }) {
   return (
-    <Wrapper>
+    <Wrapper thin>
       <div>
         <div>Activity One</div>
         <div>Results</div>

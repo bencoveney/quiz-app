@@ -32,7 +32,7 @@ export function Home({
     );
   }
   return (
-    <Wrapper>
+    <Wrapper thin>
       <span className={company}>CAE</span>
       <h1 className={title}>{quiz.name}</h1>
       <VerticalButtons>{buttons}</VerticalButtons>

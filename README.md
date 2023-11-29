@@ -21,6 +21,7 @@
 ## Consider doing
 
 - Interstitial "round N" screen with timeout
+- CSS rules to variables
 - Idiomatic react - prop interfaces, semantic html, memo cbs
 - A11y
 - CI, CD, Test

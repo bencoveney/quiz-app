@@ -1,0 +1,23 @@
+.questionTitle {
+  padding: 40px;
+  border-bottom: 2px solid #e8f4fe;
+}
+
+.activityName {
+  text-transform: uppercase;
+  margin: 0 0 40px 0;
+  font-weight: bold;
+  display: block;
+}
+
+.questionNumber {
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  font-size: 2em;
+}
+
+.stimulus {
+  padding: 20px 40px;
+  border-bottom: 2px solid #e8f4fe;
+}
