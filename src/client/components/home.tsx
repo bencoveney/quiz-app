@@ -1,7 +1,8 @@
 import { Quiz } from "../hooks/useApi";
-import { Button, VerticalButtons } from "./button";
+import { Button } from "./button";
 import { Wrapper } from "./wrapper";
-import { company, title } from "./home.module.css";
+import { Rows } from "./rows";
+import { Header } from "./header";
 
 export type StartActivity = (activityName: string) => void;
 
@@ -33,9 +34,8 @@ export function Home({
   }
   return (
     <Wrapper thin>
-      <span className={company}>CAE</span>
-      <h1 className={title}>{quiz.name}</h1>
-      <VerticalButtons>{buttons}</VerticalButtons>
+      <Header heading={quiz.name} subheading="CAE" />
+      <Rows>{buttons}</Rows>
       <Button onClick={() => void 0} disabled>
         Results
       </Button>

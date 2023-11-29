@@ -1,4 +1,8 @@
+import { Header } from "./header";
+import { Rows } from "./rows";
 import { Wrapper } from "./wrapper";
+import { resultRow, questionNumber, answer } from "./results.module.css";
+import { Button } from "./button";
 
 export function Results({
   goHome,
@@ -9,16 +13,16 @@ export function Results({
 }) {
   return (
     <Wrapper thin>
-      <div>
-        <div>Activity One</div>
-        <div>Results</div>
+      <Header heading={"Results"} subheading={"Activity One"} />
+      <Rows>
         {results.map((result, index) => (
-          <div key={index}>
-            Q{index}: {result ? "Correct" : "False"}
+          <div className={resultRow} key={index}>
+            <span className={questionNumber}>Q{index + 1}</span>{" "}
+            <span className={answer}>{result ? "Correct" : "False"}</span>
           </div>
         ))}
-        <button onClick={goHome}>Home</button>
-      </div>
+      </Rows>
+      <Button onClick={goHome}>Home</Button>
     </Wrapper>
   );
 }

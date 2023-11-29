@@ -1,4 +1,4 @@
-.company {
+.subheading {
   text-transform: uppercase;
   margin: 40px 20px 0 20px;
   text-align: center;
@@ -6,7 +6,7 @@
   display: block;
 }
 
-.title {
+.heading {
   text-align: center;
   font-weight: bold;
   display: block;

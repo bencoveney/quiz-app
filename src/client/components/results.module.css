@@ -1,0 +1,13 @@
+.resultRow {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.questionNumber {
+}
+
+.answer {
+  text-transform: uppercase;
+  font-weight: bold;
+}

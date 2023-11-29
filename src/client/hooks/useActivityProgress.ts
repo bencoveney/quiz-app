@@ -38,7 +38,6 @@ export function useActivityProgress(activity: Activity): ActivityProgress {
   const answerQuestion = useCallback(
     (answer: boolean) => {
       const currentQuestion = flattened[results.length];
-      console.log(answer, currentQuestion.question.is_correct, currentQuestion);
       setResults([...results, currentQuestion.question.is_correct === answer]);
     },
     [results]

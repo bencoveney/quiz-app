@@ -1,9 +1,5 @@
 import { PropsWithChildren } from "react";
-import {
-  button,
-  verticalButtons,
-  horizontalButtons,
-} from "./button.module.css";
+import { button, buttonBar } from "./button.module.css";
 
 export function Button({
   children,
@@ -20,10 +16,6 @@ export function Button({
   );
 }
 
-export function VerticalButtons({ children }: PropsWithChildren) {
-  return <div className={verticalButtons}>{children}</div>;
-}
-
-export function HorizontalButtons({ children }: PropsWithChildren) {
-  return <div className={horizontalButtons}>{children}</div>;
+export function ButtonBar({ children }: PropsWithChildren) {
+  return <div className={buttonBar}>{children}</div>;
 }

@@ -23,24 +23,11 @@
   cursor: not-allowed;
 }
 
-.verticalButtons {
-  display: flex;
-  flex-direction: column;
-}
-
-.verticalButtons > .button {
-  border-top: 2px solid #e8f4fe;
-}
-
-.verticalButtons > .button:last-child {
-  border-bottom: 2px solid #e8f4fe;
-}
-
-.horizontalButtons {
+.buttonBar {
   display: flex;
   flex-direction: row;
 }
 
-.horizontalButtons > .button {
+.buttonBar > .button {
   flex: 1 0 10px;
 }

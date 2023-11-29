@@ -3,7 +3,7 @@ import {
   Activity as ApiActivity,
   Round as ApiRound,
 } from "../hooks/useApi";
-import { Button, HorizontalButtons } from "./button";
+import { Button, ButtonBar } from "./button";
 import { Wrapper } from "./wrapper";
 import {
   questionTitle,
@@ -33,10 +33,10 @@ export function Question({
         <span className={questionNumber}>Q{1}.</span>
       </div>
       <div className={stimulus}>{question.stimulus}</div>
-      <HorizontalButtons>
+      <ButtonBar>
         <Button onClick={() => answerQuestion(true)}>Correct</Button>
         <Button onClick={() => answerQuestion(false)}>Incorrect</Button>
-      </HorizontalButtons>
+      </ButtonBar>
     </Wrapper>
   );
 }
