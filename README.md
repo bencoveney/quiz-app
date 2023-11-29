@@ -20,6 +20,8 @@
 
 ## Consider doing
 
+- Use question number
+- Responsive styles
 - Interstitial "round N" screen with timeout
 - CSS rules to variables
 - Idiomatic react - prop interfaces, semantic html, memo cbs

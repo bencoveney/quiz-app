@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ActivityRunning } from "./useActivityProgress";
 
-export function useRoundIntro(activityRunning: ActivityRunning): boolean {
-  const [isDismissed, setIsDismissed] = useState(!activityRunning.round);
-  const [activeRound, setActiveRound] = useState(activityRunning.round);
+export function useRoundIntro({ currentQuestion }: ActivityRunning): boolean {
+  const [isDismissed, setIsDismissed] = useState(!currentQuestion.round);
+  const [activeRound, setActiveRound] = useState(currentQuestion.round);
 
   useEffect(() => {
     if (isDismissed) {
@@ -14,11 +14,11 @@ export function useRoundIntro(activityRunning: ActivityRunning): boolean {
   }, [isDismissed]);
 
   useEffect(() => {
-    setActiveRound(activityRunning.round);
-    if (activityRunning.round) {
+    setActiveRound(currentQuestion.round);
+    if (currentQuestion.round) {
       setIsDismissed(false);
     }
-  }, [activityRunning.round]);
+  }, [currentQuestion.round]);
 
-  return activeRound != activityRunning.round || !isDismissed;
+  return activeRound != currentQuestion.round || !isDismissed;
 }

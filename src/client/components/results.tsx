@@ -3,22 +3,51 @@ import { Rows } from "./rows";
 import { Wrapper } from "./wrapper";
 import { resultRow, questionNumber, answer } from "./results.module.css";
 import { Button } from "./button";
+import { ReactNode } from "react";
+import { QuestionDescription } from "../hooks/useActivityProgress";
+import { Activity, isRound } from "../hooks/useApi";
 
 export function Results({
   goHome,
   results,
+  activity,
 }: {
   goHome: () => void;
   results: boolean[];
+  activity: Activity;
 }) {
+  const rows: ReactNode[] = [];
+  const resultsCopy = [...results];
+  activity.questions.forEach((questionOrRound, index) => {
+    if (isRound(questionOrRound)) {
+      rows.push(<>{questionOrRound.round_title}</>);
+      questionOrRound.questions.forEach((question) => {
+        const result = resultsCopy.shift();
+        rows.push(
+          <>
+            <span className={questionNumber}>Q{index + 1}</span>{" "}
+            <span className={answer}>{result ? "Correct" : "False"}</span>
+          </>
+        );
+      });
+    } else {
+      const result = resultsCopy.shift();
+      rows.push(
+        <>
+          <span className={questionNumber}>Q{index + 1}</span>{" "}
+          <span className={answer}>{result ? "Correct" : "False"}</span>
+        </>
+      );
+    }
+  });
+
   return (
     <Wrapper thin>
       <Header heading={"Results"} subheading={"Activity One"} />
       <Rows>
-        {results.map((result, index) => (
+        {...rows.map((row, index) => (
           <div className={resultRow} key={index}>
-            <span className={questionNumber}>Q{index + 1}</span>{" "}
-            <span className={answer}>{result ? "Correct" : "False"}</span>
+            {row}
           </div>
         ))}
       </Rows>

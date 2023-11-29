@@ -12,20 +12,21 @@ export function Round({
   activity: ApiActivity;
   activityRunning: ActivityRunning;
 }) {
+  const { currentQuestion } = activityRunning;
   const displayIntroduction = useRoundIntro(activityRunning);
   if (displayIntroduction) {
     return (
       <Wrapper>
         <span className={activityName}>{activity.activity_name}</span>
-        <span className={roundName}>{activityRunning.round!.round_title}</span>
+        <span className={roundName}>{currentQuestion.round!.round_title}</span>
       </Wrapper>
     );
   } else {
     return (
       <Question
         activity={activity}
-        question={activityRunning.question}
-        round={activityRunning.round}
+        question={currentQuestion.question}
+        round={currentQuestion.round}
         answerQuestion={activityRunning.answerQuestion}
       />
     );

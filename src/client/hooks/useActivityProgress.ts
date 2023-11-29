@@ -8,17 +8,18 @@ export type ActitityResults = {
 
 export type AnswerQuestion = (answer: boolean) => void;
 
-export type ActivityRunning = QuestionDescription & {
+export type ActivityRunning = {
   kind: "running";
   answerQuestion: AnswerQuestion;
+  currentQuestion: QuestionDescription;
 };
 
 export type ActivityProgress = ActitityResults | ActivityRunning;
 
-type QuestionDescription = { round?: Round; question: Question };
+export type QuestionDescription = { round?: Round; question: Question };
 
 export function useActivityProgress(activity: Activity): ActivityProgress {
-  const flattened = useMemo(
+  const flatListOfQuestions = useMemo(
     () =>
       activity.questions.flatMap<QuestionDescription>((questionOrRound) => {
         if (isRound(questionOrRound)) {
@@ -37,24 +38,24 @@ export function useActivityProgress(activity: Activity): ActivityProgress {
 
   const answerQuestion = useCallback(
     (answer: boolean) => {
-      const currentQuestion = flattened[results.length];
+      const currentQuestion = flatListOfQuestions[results.length];
       setResults([...results, currentQuestion.question.is_correct === answer]);
     },
     [results]
   );
 
-  if (results.length >= flattened.length) {
+  if (results.length >= flatListOfQuestions.length) {
     return {
       kind: "results",
       results,
     };
   }
 
-  const currentQuestion = flattened[results.length];
+  const currentQuestion = flatListOfQuestions[results.length];
 
   return {
     kind: "running",
     answerQuestion,
-    ...currentQuestion,
+    currentQuestion,
   };
 }

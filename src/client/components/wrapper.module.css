@@ -5,6 +5,11 @@
   min-width: 300px;
   display: flex;
   flex-direction: column;
+  min-height: 350px;
+}
+
+.wrapper > *:last-child {
+  flex-grow: 1;
 }
 
 .thin {
@@ -12,5 +17,5 @@
 }
 
 .wide {
-  min-width: 600px;
+  width: 600px;
 }
