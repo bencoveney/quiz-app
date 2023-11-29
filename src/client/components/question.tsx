@@ -28,15 +28,31 @@ export function Question({
   return (
     <Wrapper>
       <div className={questionTitle}>
-        <span className={activityName}>{activity.activity_name}</span>
-        {round ? ` / ${round.round_title}` : null}
+        <span className={activityName}>
+          {activity.activity_name}
+          {round ? ` / ${round.round_title}` : null}
+        </span>
         <span className={questionNumber}>Q{1}.</span>
       </div>
-      <div className={stimulus}>{question.stimulus}</div>
+      <Stimulus content={question.stimulus} />
       <ButtonBar>
         <Button onClick={() => answerQuestion(true)}>Correct</Button>
         <Button onClick={() => answerQuestion(false)}>Incorrect</Button>
       </ButtonBar>
     </Wrapper>
+  );
+}
+
+function Stimulus({ content }: { content: string }) {
+  const matches = /\*([^\*]*)\*/g.exec(content);
+  const formattedContent = content.replace(
+    matches![0],
+    `<strong>${matches![1]}</strong>`
+  );
+  return (
+    <div
+      className={stimulus}
+      dangerouslySetInnerHTML={{ __html: formattedContent }}
+    />
   );
 }
