@@ -1,0 +1,40 @@
+.button {
+  text-transform: uppercase;
+  display: block;
+  background-color: #ffffff;
+  transition: background-color 150ms linear;
+  color: #2699fb;
+  border: 0;
+  padding: 20px;
+}
+
+.button:hover {
+  background-color: #e8f4fe;
+}
+
+.button:active {
+  background-color: #e8f4fe;
+}
+
+.button:disabled {
+  color: #cccccc;
+  background-color: #ffffff;
+}
+
+.verticalButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+.verticalButtons > .button {
+  border-top: 2px solid #e8f4fe;
+}
+
+.verticalButtons > .button:last-child {
+  border-bottom: 2px solid #e8f4fe;
+}
+
+.horizontalButtons {
+  display: flex;
+  flex-direction: row;
+}

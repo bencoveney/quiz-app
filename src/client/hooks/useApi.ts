@@ -23,9 +23,9 @@ export interface Round {
 export interface Question {
   is_correct: boolean;
   stimulus: string;
-  feedback: string;
   // order exists in the JSON document, but arrays are already ordered.
   // user_answers exists in the JSON document, but never has any content.
+  // feedback exists in the JSON document, but never has any content.
 }
 
 export function isRound(candidate: Round | Question): candidate is Round {

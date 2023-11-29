@@ -15,6 +15,8 @@
 - Can question arrays ever be empty?
 - order exists in the JSON document, but arrays are already ordered. How reliable is it? (unique? sorted? contiguous?)
 - user_answers exists in the JSON document, but never has any content.
+- feedback exists in the JSON document, but never has any content.
+- Drop shadows in the styles - should I be able to see CSS properties in Adobe XD?
 
 ## Consider doing
 

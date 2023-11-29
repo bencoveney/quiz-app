@@ -1,0 +1,8 @@
+.wrapper {
+  border: 2px solid #cee8fe;
+  background-color: #ffffff;
+  color: #2699fb;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
