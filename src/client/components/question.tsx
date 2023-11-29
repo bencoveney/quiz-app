@@ -32,7 +32,7 @@ export function Question({
           {activity.activity_name}
           {round ? ` / ${round.round_title}` : null}
         </span>
-        <span className={questionNumber}>Q{1}.</span>
+        <span className={questionNumber}>Q{question.order}.</span>
       </div>
       <Stimulus content={question.stimulus} />
       <ButtonBar>

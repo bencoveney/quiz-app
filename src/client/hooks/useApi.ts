@@ -23,7 +23,7 @@ export interface Round {
 export interface Question {
   is_correct: boolean;
   stimulus: string;
-  // order exists in the JSON document, but arrays are already ordered.
+  order: number;
   // user_answers exists in the JSON document, but never has any content.
   // feedback exists in the JSON document, but never has any content.
 }

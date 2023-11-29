@@ -25,7 +25,7 @@ export function Results({
         const result = resultsCopy.shift();
         rows.push(
           <>
-            <span className={questionNumber}>Q{index + 1}</span>{" "}
+            <span className={questionNumber}>Q{question.order}</span>{" "}
             <span className={answer}>{result ? "Correct" : "False"}</span>
           </>
         );
@@ -34,7 +34,7 @@ export function Results({
       const result = resultsCopy.shift();
       rows.push(
         <>
-          <span className={questionNumber}>Q{index + 1}</span>{" "}
+          <span className={questionNumber}>Q{questionOrRound.order}</span>{" "}
           <span className={answer}>{result ? "Correct" : "False"}</span>
         </>
       );
