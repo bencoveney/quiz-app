@@ -5,13 +5,13 @@ import { useRouter } from "../hooks/useRouter";
 
 export function App() {
   const quiz = useApi();
-  const { page, goHome, goToActivity } = useRouter(quiz);
-  switch (page.kind) {
+  const { route, goHome, goToActivity } = useRouter(quiz);
+  switch (route.page) {
     case "home":
       return <Home quiz={quiz!} startActivity={goToActivity} />;
     case "activity":
       const currentActivity = quiz!.activities.find(
-        (activity) => activity.activity_name === page.activityName
+        (activity) => activity.activity_name === route.activityName
       )!;
       return <Activity activity={currentActivity} goHome={goHome} />;
     default:

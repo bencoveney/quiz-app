@@ -3,49 +3,49 @@ import { Quiz } from "./useApi";
 
 export type Page =
   | {
-      kind: "home";
+      page: "home";
     }
   | {
-      kind: "loading";
+      page: "loading";
     }
-  | { kind: "activity"; activityName: string };
+  | { page: "activity"; activityName: string };
 
 export type Router = {
-  page: Page;
+  route: Page;
   goHome: () => void;
   goToActivity: (activityName: string) => void;
 };
 
 export function useRouter(quiz: Quiz | null): Router {
   const [page, setPage] = useState<Page>(
-    quiz === null ? { kind: "loading" } : { kind: "home" }
+    quiz === null ? { page: "loading" } : { page: "home" }
   );
 
   // Transition from "loading" to "home" once the data is present.
   useEffect(() => {
     if (quiz !== null) {
-      setPage({ kind: "home" });
+      setPage({ page: "home" });
     }
   }, [quiz]);
 
   const goHome = useCallback(
     () =>
       setPage({
-        kind: "home",
+        page: "home",
       }),
     [setPage]
   );
   const goToActivity = useCallback(
     (activityName: string) =>
       setPage({
-        kind: "activity",
+        page: "activity",
         activityName,
       }),
     [setPage]
   );
 
   return {
-    page,
+    route: page,
     goHome,
     goToActivity,
   };
