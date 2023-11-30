@@ -1,6 +1,6 @@
 .subheading {
   text-transform: uppercase;
-  margin: 40px 20px 0 20px;
+  margin: var(--padding-large) var(--padding-medium) 0 var(--padding-medium);
   text-align: center;
   font-weight: bold;
   display: block;
@@ -10,5 +10,5 @@
   text-align: center;
   font-weight: bold;
   display: block;
-  margin: 40px 20px 40px 20px;
+  margin: var(--padding-large) var(--padding-medium);
 }

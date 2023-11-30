@@ -1,11 +1,11 @@
 .questionTitle {
-  padding: 40px;
-  border-bottom: 2px solid #e8f4fe;
+  padding: var(--padding-large);
+  border-bottom: 2px solid var(--color-internal-border);
 }
 
 .activityName {
   text-transform: uppercase;
-  margin: 0 0 40px 0;
+  margin: 0 0 var(--padding-large) 0;
   font-weight: bold;
   display: block;
 }
@@ -18,7 +18,7 @@
 }
 
 .stimulus {
-  padding: 20px 40px;
-  border-bottom: 2px solid #e8f4fe;
+  padding: var(--padding-medium) var(--padding-large);
+  border-bottom: 2px solid var(--color-internal-border);
   line-height: 140%;
 }

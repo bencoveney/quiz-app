@@ -1,5 +1,5 @@
 .resultRow {
-  padding: 20px;
+  padding: var(--padding-medium);
   display: flex;
   justify-content: space-between;
 }

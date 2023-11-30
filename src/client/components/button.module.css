@@ -1,25 +1,25 @@
 .button {
   text-transform: uppercase;
   display: block;
-  background-color: #ffffff;
+  background-color: var(--color-wrapper-background);
   transition: background-color 150ms linear;
-  color: #2699fb;
+  color: var(--color-text);
   border: 0;
-  padding: 20px;
+  padding: var(--padding-medium);
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #e8f4fe;
+  background-color: var(--color-internal-border);
 }
 
 .button:active {
-  background-color: #e8f4fe;
+  background-color: var(--color-internal-border);
 }
 
 .button:disabled {
-  color: #cccccc;
-  background-color: #ffffff;
+  color: var(--color-text-disabled);
+  background-color: var(--color-wrapper-background);
   cursor: not-allowed;
 }
 
@@ -30,4 +30,10 @@
 
 .buttonBar > .button {
   flex: 1 0 10px;
+}
+
+@media (max-width: 625px) {
+  .buttonBar {
+    flex-direction: column;
+  }
 }

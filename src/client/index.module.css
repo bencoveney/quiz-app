@@ -4,12 +4,23 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-page-background: #f1f9ff;
+  --color-wrapper-background: #ffffff;
+  --color-wrapper-border: #cee8fe;
+  --color-internal-border: #e8f4fe;
+  --color-text: #2699fb;
+  --color-text-disabled: #cccccc;
+  --padding-large: 40px;
+  --padding-medium: 20px;
+}
+
 html,
 body,
 body > div {
   width: 100%;
   height: 100%;
-  background-color: #f1f9ff;
+  background-color: var(--color-page-background);
   /* https://systemfontstack.com/ */
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,

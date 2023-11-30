@@ -51,7 +51,11 @@ A couple of components in the `components/` directory have been kept as "present
 - `rows.tsx`
 - `wrapper.tsx`
 
+### Styles
+
 For managing styles I opted to use CSS modules, as they are well supported in `esbuild` and allow native CSS rules to be easily associated with React components.
+
+`index.module.css` includes a basic global reset stylesheet. Some common theme spacing/color values have been pulled out into CSS variables. There are rudimentary responsive styles for mobile devices.
 
 ### Hooks
 
@@ -69,7 +73,7 @@ The `useRoundIntro` hook is responsible for displaying the timed "Round N" scree
 
 The `useSavedResults` hook stores the user's most recent set of results into local storage. This allows them to be accessed later from the home screen.
 
-I opted not to use React Context for any of the state as the codebase does not currently suffer from prop-drilling problems, but it is reaching the point where that could be considered. `index.module.css` includes a basic global reset stylesheet.
+I opted not to use React Context for any of the state as the codebase does not currently suffer from prop-drilling problems, but it is reaching the point where that could be considered.
 
 ## Decisions
 
@@ -112,8 +116,3 @@ As a consumer of this API, I would communicate with the provider of the API (or 
 I assume from the test data and user flows that it is not possible for a single activity to have a mix of within-round and without-round questions. I'm not certain this is a safe assumption and to some extent the client code is written with this possibility in mind. There's other edgecases I'd normally also like to rule out, for example whether there could possibly be an empty array of questions.
 
 I'm not sure if it's possible to inspect colors/spacing/CSS using the wireframe I had access to. I would know how to do this in figma, but I'm not as familiar with Adobe XD. Wireframe seemed to auto-advance to the next round (which I have implemented), but I'm not sure that's compatible with the flow description.
-
-## Consider doing
-
-- Responsive styles
-- CSS rules to variables

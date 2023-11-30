@@ -1,12 +1,12 @@
 .activityName {
   text-transform: uppercase;
-  margin: 40px 40px 0 40px;
+  margin: var(--padding-large) var(--padding-large) 0 var(--padding-large);
   font-weight: bold;
   display: block;
 }
 
 .roundName {
-  margin: 40px;
+  margin: var(--padding-large);
   text-transform: uppercase;
   font-weight: bold;
   display: block;
