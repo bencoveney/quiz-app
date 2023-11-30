@@ -4,7 +4,6 @@ import { Wrapper } from "./wrapper";
 import { resultRow, questionNumber, answer } from "./results.module.css";
 import { Button } from "./button";
 import { ReactNode } from "react";
-import { QuestionDescription } from "../hooks/useActivityProgress";
 import { Activity, isRound } from "../hooks/useApi";
 
 export function Results({
