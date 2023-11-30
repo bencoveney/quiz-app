@@ -24,6 +24,18 @@ npm start # Start server on localhost:3000
 npm run dev-client # Run simultaneously for client code watch mode.
 ```
 
+## Deployment
+
+This is currently deployed to an AWS lightsail instance.
+
+```bash
+rsync -rv . [remote]:~/server # rsync files to remote
+ssh [remote]
+cd ./server
+screen # screen -r to resume
+npm start
+```
+
 ## Codebase Structure
 
 - `assets/` - Static assets to be included in the build (just index.html at the moment)
@@ -103,7 +115,7 @@ There were some options/ideas I ruled out as not being necessary to meet the req
 
 - Server-side rendering of pages for faster initial page-load times (or to realise some of the benefit of my routing structure).
 - Saving user results in a database on the server, which would perhaps require some notion of users/sessions to keep results separate.
-- Building to a container and deploying using a pipeline. This would be a better production strategy but would be a time-spend on writing boilerplate rather than demonstrating architectural thinking.
+- Building to a container and deploying using a pipeline. This would be a better production strategy but would be a time-spend on writing boilerplate rather than demonstrating architectural thinking. I have [examples on GitHub](https://github.com/bencoveney/aws-games/blob/main/.github/workflows/deploy.yaml) of a simple end-to-end container CI/CD pipeline using ECR and CloudFormation for reference.
 
 ## Observations
 
