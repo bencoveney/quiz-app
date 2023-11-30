@@ -16,7 +16,7 @@ npm start # Start dev server on localhost:3000
 npm run dev-client # Run simultaneously for client code watch mode.
 ```
 
-## Structure
+## Codebase Structure
 
 This is a quiz web app build in react.
 
@@ -90,7 +90,7 @@ One drawback to this approach is that I sometimes need to "zip" the flat list ba
 
 ### Time Spend or Extras
 
-I have chosen to build a React SPA as that is the toolchain I find quickest to get up and running.
+I have chosen to build a React SPA using `express` and `esbuid` as that is the toolchain I find quickest to get up and running and focus on the task.
 
 There were some options/ideas I ruled out as not being necessary to meet the requirements, but could be interesting next steps:
 
@@ -98,25 +98,20 @@ There were some options/ideas I ruled out as not being necessary to meet the req
 - Saving user results in a database on the server, which would perhaps require some notion of users/sessions to keep results separate.
 - Building to a container and deploying using a pipeline. This would be a better production strategy but would be a time-spend on writing boilerplate rather than demonstrating architectural thinking.
 
-## Questions
+## Observations
 
-## State identified
+If I were in control of the API, I would've thought about exposing a identifier on activities/rounds/questions that is certain to be unique. I found on a couple of occasions in the client code I thought "I wish there was an explicit identifier for this X/Y/Z that I could use for lookups". Some of the `_name` or `order` properties may have had this purpose, but I was hesistant to treat them as such as the content didn't "feel" like an identifier.
 
-- API response
-- Active quiz
-- Results(?)
+On `order` specifically, I feel like on some of the domain objects it is never really required. Ultimately JSON arrays are garunteed to be unique, so `order` feels redundant if it is effectively just the index within the array.
 
-## Questions
+As a consumer of this API, I would communicate with the provider of the API (or read any available documentation) to find out what strategy I would need when consuming this. Some factors to explore here would be:
 
-- Are the names unique and suitable as a key?
-- How long can API responses be cached?
-- Not clear what the homepage link is supposed to do. Most recent set of results?
-- Can rounds and questions be intermingled? Or arbitrarily nested?
-- Can question arrays ever be empty?
-- order exists in the JSON document, but arrays are already ordered. How reliable is it? (unique? sorted? contiguous?)
-- user_answers exists in the JSON document, but never has any content.
-- feedback exists in the JSON document, but never has any content.
-- Drop shadows in the styles - should I be able to see CSS properties in Adobe XD?
+- How much data could potentially be returned.
+- How long can responses safely be cached for.
+
+I assume from the test data and user flows that it is not possible for a single activity to have a mix of within-round and without-round questions. I'm not certain this is a safe assumption and to some extent the client code is written with this possibility in mind. There's other edgecases I'd normally also like to rule out, for example whether there could possibly be an empty array of questions.
+
+I'm not sure if it's possible to inspect colors/spacing/CSS using the wireframe I had access to. I would know how to do this in figma, but I'm not as familiar with Adobe XD. Wireframe seemed to auto-advance to the next round (which I have implemented), but I'm not sure that's compatible with the flow description.
 
 ## Consider doing
 
