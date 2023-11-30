@@ -14,17 +14,14 @@ import {
 
 export type AnswerQuestion = (isCorrect: boolean) => void;
 
-export function Question({
-  activity,
-  round,
-  question,
-  answerQuestion,
-}: {
+interface Props {
   activity: ApiActivity;
   question: ApiQuestion;
   round?: ApiRound;
   answerQuestion: AnswerQuestion;
-}) {
+}
+
+export function Question({ activity, round, question, answerQuestion }: Props) {
   return (
     <Wrapper>
       <div className={questionTitle}>

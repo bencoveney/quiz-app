@@ -6,15 +6,13 @@ import { Header } from "./header";
 
 const MINIMUM_ACTIVITY_BUTTONS = 5;
 
-export function Home({
-  quiz,
-  startActivity,
-  goToResults,
-}: {
+interface Props {
   quiz: Quiz;
   startActivity: (activityName: string) => void;
   goToResults?: () => void;
-}) {
+}
+
+export function Home({ quiz, startActivity, goToResults }: Props) {
   const buttons = quiz.activities.map((activity) => (
     <Button
       key={activity.activity_name}

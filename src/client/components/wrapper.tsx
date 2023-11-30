@@ -5,10 +5,11 @@ import {
   wide as wideStyles,
 } from "./wrapper.module.css";
 
-export function Wrapper({
-  children,
-  thin,
-}: PropsWithChildren<{ thin?: boolean }>) {
+interface Props {
+  thin?: boolean;
+}
+
+export function Wrapper({ children, thin }: PropsWithChildren<Props>) {
   const widthStyles = thin ? thinStyles : wideStyles;
-  return <div className={`${wrapper} ${widthStyles}`}>{children}</div>;
+  return <main className={`${wrapper} ${widthStyles}`}>{children}</main>;
 }

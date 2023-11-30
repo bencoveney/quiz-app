@@ -3,17 +3,16 @@ import {
   subheading as subheadingStyles,
 } from "./header.module.css";
 
-export function Header({
-  heading,
-  subheading,
-}: {
+interface Props {
   heading: string;
   subheading: string;
-}) {
+}
+
+export function Header({ heading, subheading }: Props) {
   return (
-    <div>
+    <header>
       <span className={subheadingStyles}>{subheading}</span>
       <h1 className={headingStyles}>{heading}</h1>
-    </div>
+    </header>
   );
 }

@@ -122,5 +122,3 @@ There were some options/ideas I ruled out as not being necessary to meet the req
 
 - Responsive styles
 - CSS rules to variables
-- Idiomatic react - prop interfaces, semantic html, memo cbs
-- A11y

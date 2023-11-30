@@ -5,13 +5,12 @@ import { Question } from "./question";
 import { useRoundIntro } from "../hooks/useRoundIntro";
 import { activityName, roundName } from "./round.module.css";
 
-export function Round({
-  activity,
-  activityRunning,
-}: {
+interface Props {
   activity: ApiActivity;
   activityRunning: ActivityRunning;
-}) {
+}
+
+export function Round({ activity, activityRunning }: Props) {
   const { currentQuestion } = activityRunning;
   // Detect when we need to display the "Round Introduction" screen. This depends on the structure
   // of the questions in the activity, so that complexity has been pulled out into a hook.

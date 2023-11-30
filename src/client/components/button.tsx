@@ -1,14 +1,12 @@
 import { PropsWithChildren } from "react";
 import { button, buttonBar } from "./button.module.css";
 
-export function Button({
-  children,
-  disabled,
-  onClick,
-}: PropsWithChildren<{
+interface Props extends PropsWithChildren {
   onClick: () => void;
   disabled?: boolean;
-}>) {
+}
+
+export function Button({ children, disabled, onClick }: Props) {
   return (
     <button disabled={disabled} className={button} onClick={onClick}>
       {children}
