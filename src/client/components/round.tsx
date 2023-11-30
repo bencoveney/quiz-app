@@ -13,6 +13,8 @@ export function Round({
   activityRunning: ActivityRunning;
 }) {
   const { currentQuestion } = activityRunning;
+  // Detect when we need to display the "Round Introduction" screen. This depends on the structure
+  // of the questions in the activity, so that complexity has been pulled out into a hook.
   const displayIntroduction = useRoundIntro(activityRunning);
   if (displayIntroduction) {
     return (

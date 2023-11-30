@@ -11,7 +11,6 @@ export type SavedResults = {
 };
 
 const localStorageKey = "SAVED_RESULTS";
-
 function loadFromLocalStorage(): SaveData | null {
   const found = localStorage.getItem(localStorageKey);
   if (found !== null) {
@@ -19,7 +18,6 @@ function loadFromLocalStorage(): SaveData | null {
   }
   return null;
 }
-
 function saveToLocalStorage(saveData: SaveData) {
   localStorage.setItem(localStorageKey, JSON.stringify(saveData));
 }

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-const cache = fetch("/api").then((res) => res.json());
-
 export interface Quiz {
   name: string;
   heading: string;
@@ -31,6 +29,9 @@ export interface Question {
 export function isRound(candidate: Round | Question): candidate is Round {
   return !!(candidate as Round).round_title;
 }
+
+// Fetch the API data once and cache in memory for the lifetime of the page.
+const cache = fetch("/api").then((res) => res.json());
 
 export function useApi() {
   const [response, setResponse] = useState<Quiz | null>(null);

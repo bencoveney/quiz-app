@@ -4,7 +4,7 @@ import { Wrapper } from "./wrapper";
 import { Rows } from "./rows";
 import { Header } from "./header";
 
-export type StartActivity = (activityName: string) => void;
+const MINIMUM_ACTIVITY_BUTTONS = 5;
 
 export function Home({
   quiz,
@@ -12,7 +12,7 @@ export function Home({
   goToResults,
 }: {
   quiz: Quiz;
-  startActivity: StartActivity;
+  startActivity: (activityName: string) => void;
   goToResults?: () => void;
 }) {
   const buttons = quiz.activities.map((activity) => (
@@ -24,15 +24,15 @@ export function Home({
     </Button>
   ));
 
-  // Pad buttons list to 5.
-  while (buttons.length < 5) {
+  // Pad buttons list.
+  while (buttons.length < MINIMUM_ACTIVITY_BUTTONS) {
     buttons.push(
       <Button
         key={`fake_button_${buttons.length}`}
         onClick={() => void 0}
         disabled
       >
-        Activity {buttons.length}
+        Activity {buttons.length + 1}
       </Button>
     );
   }

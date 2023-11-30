@@ -15,9 +15,13 @@ export function Results({
   results: boolean[];
   activity: Activity;
 }) {
+  // Results have been stored in a flat array, but the activity structure could be nested.
+  // We need to zip those two models back together, while inserting the "round" heading in the correct places.
+  // We can simplify the zipping process by "shifting" from the results array. This would mutate
+  // it, hence the copy.
   const rows: ReactNode[] = [];
   const resultsCopy = [...results];
-  activity.questions.forEach((questionOrRound, index) => {
+  activity.questions.forEach((questionOrRound) => {
     if (isRound(questionOrRound)) {
       rows.push(<>{questionOrRound.round_title}</>);
       questionOrRound.questions.forEach((question) => {

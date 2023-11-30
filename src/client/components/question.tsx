@@ -44,6 +44,7 @@ export function Question({
 }
 
 function Stimulus({ content }: { content: string }) {
+  // Replace *asterisks* with <strong>HTML</strong>
   const matches = /\*([^\*]*)\*/g.exec(content);
   const formattedContent = content.replace(
     matches![0],

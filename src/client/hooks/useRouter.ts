@@ -30,6 +30,7 @@ export function useRouter(quiz: Quiz | null): Router {
     }
   }, [quiz]);
 
+  // Export a friendlier API for changing pages.
   const goHome = useCallback(() => setPage({ page: "home" }), [setPage]);
   const goToActivity = useCallback(
     (activityName: string) =>
