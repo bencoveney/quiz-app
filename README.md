@@ -1,5 +1,7 @@
 # quiz-app
 
+A quiz web app build in react.
+
 ## Commands
 
 For building the project:
@@ -8,26 +10,27 @@ For building the project:
 npm run build # Build app
 ```
 
+Running the project in production:
+
+```bash
+npm start # Start server on localhost:3000
+```
+
 Running the project for development:
 
 ```bash
 npm run build # Build app
-npm start # Start dev server on localhost:3000
+npm start # Start server on localhost:3000
 npm run dev-client # Run simultaneously for client code watch mode.
 ```
 
 ## Codebase Structure
 
-This is a quiz web app build in react.
-
-The code in `src/` is split into:
-
+- `assets/` - Static assets to be included in the build (just index.html at the moment)
 - `src/server/` - A very simple express backend.
 - `src/client/` - A react single page application.
 
 ### Server
-
-The backend server:
 
 - Hosts the static assets and client code.
 - Caches the API data in-memory.
@@ -35,7 +38,7 @@ The backend server:
 
 ### Client
 
-The entrypoint for the client is `src/client/components/app.tsx`. There are 4 main pages this picks between:
+The base component for the client is `src/client/components/app.tsx`. There are 4 main pages this picks between:
 
 - `Loading` - Shown while the client is accessing the API during initial page load.
 - `Home` - The default screen.
@@ -44,7 +47,7 @@ The entrypoint for the client is `src/client/components/app.tsx`. There are 4 ma
 
 ### Components
 
-A couple of components in the `components/` directory have been kept as "presentational" and do not contain any business logic, to allow them to be reused on mulitple pages:
+A couple of components in the `src/client/components/` directory have been kept as "presentational" and do not contain any business logic, to allow them to be reused on mulitple pages:
 
 - `button.tsx`
 - `header.tsx`
@@ -115,4 +118,4 @@ As a consumer of this API, I would communicate with the provider of the API (or 
 
 I assume from the test data and user flows that it is not possible for a single activity to have a mix of within-round and without-round questions. I'm not certain this is a safe assumption and to some extent the client code is written with this possibility in mind. There's other edgecases I'd normally also like to rule out, for example whether there could possibly be an empty array of questions.
 
-I'm not sure if it's possible to inspect colors/spacing/CSS using the wireframe I had access to. I would know how to do this in figma, but I'm not as familiar with Adobe XD. Wireframe seemed to auto-advance to the next round (which I have implemented), but I'm not sure that's compatible with the flow description.
+I'm not sure if it's possible to inspect colors/spacing/CSS using the wireframe I had access to. I would know how to do this in Figma, but I'm not as familiar with Adobe XD. Wireframe seemed to auto-advance to the next round on a timer (which I have implemented), but I'm not sure that's compatible with the flow description.
